@@ -1,5 +1,5 @@
 <?php
-require("db_connect.php");
+require_once("db_connect.php");
 
 // Überprüfe, ob das Suchfeld ausgefüllt wurde
 $search_query = isset($_GET['search']) ? $_GET['search'] : '';
@@ -43,7 +43,6 @@ if (!empty($search_query)) {
   if (mysqli_num_rows($result) == 0) {
     $layout = "<h1 class='text-center text-light'>No result</h1>";
   } else {
-    // Ergebnisse durchlaufen und Karten erstellen
     $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
     foreach ($rows as $value) {
       $layout .= "<div class='d-flex m-2'>
@@ -76,9 +75,7 @@ if (!empty($search_query)) {
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid d-flex justify-content-between">
       <a class="navbar-brand">Coders Library & Media</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      
       <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
